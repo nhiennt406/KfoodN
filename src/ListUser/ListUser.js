@@ -22,7 +22,7 @@ const ListUser = () => {
   const tokenT = localStorage.getItem("token");
   console.log(tokenT);
   useEffect(() => {
-    axios.get(`http://apikfood.kaviet.vn:5000/api/kfood/v1/showAllUser`,
+    axios.get(`https://apifood.kaviet.vn/api/kfood/v1/showAllUser`,
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
