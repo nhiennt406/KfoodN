@@ -19,10 +19,10 @@ class StudentManagement extends Component {
       <Router>
         <Switch>
           <Route path="/home" component={NavBar} />
-          {/* <Route path="/" component={InvalidPage} /> */}
+          <Route path="/" component={Login} />
           {/* <Route exact path="/login" component={Login} /> */}
          <Route path="/dangnhap" component={Login}/>
-          <Route path="*" component={Erro}/>
+          {/* <Route path="*" component={Erro}/> */}
         </Switch>
       </Router>
     );
