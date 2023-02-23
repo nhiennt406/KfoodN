@@ -6,17 +6,12 @@ import "./ListClass.css";
 import { Link } from "react-router-dom";
 import { Button, Modal } from 'antd';
 // import "../table.scss"
+import styled from "styled-components";
 const ListClass= () => {
 
 const [dataList,setDataList]=useState([]);
 // axios('http://apikfood.kaviet.vn:5000/api/kfood/v1',)
- const dataListGroups=[
-  {
-    id_group:"1",
-    ten_group:"Nhom hoc buoi chieu",
-  
-  }
- ]
+
  const tokenT= localStorage.getItem("token");
  console.log(tokenT);
   useEffect(() => {
@@ -61,10 +56,170 @@ const [dataList,setDataList]=useState([]);
       }
     )
   }
+  const [formData, setFormData] = useState({
+    id_class: "",
+    class_name: "",
+    id_group:"",
+    id_user:""
+  });
+
+  const { id_class, class_name,id_group,id_user } = formData;
+
+
+  const onChange = e => {
+    setFormData({
+      // if(e.target.name == )
+
+      ...formData,
+      [e.target.name]: e.target.value,
+      // [formData.id_group]:localStorage.getItem("id")
+    });  
+    // console.log(formData)
+  };
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = (id) => {
+    setIsModalOpen(true);
+    // console.log(id);
+    localStorage.setItem("id", id);
+    // console.log(">>",localStorage.getItem("id"))
+    // const params = new URLSearchParams({
+    //   id_class: id
+    // }).toString();
+    // const url = `https://apifood.kaviet.vn/api/kfood/v1/viewClassRoom?` + params
+  //   axios.post(url, {},
+  //     // https://apifood.kaviet.vn/api/kfood/v1/deleteStudent?id_student=${id}`,
+  //     {
+  //       headers: {
+  //         accept: 'application/json',
+  //         Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //         'Content-Type': 'application/json'
+  //       },
+  //     }
+  //   ).then(
+  //     ({ data }) => {
+  //       console.log(">>>.")
+  //       //  alert(" thành công")
+  //       // dataList.
+  //       //  console.log(data)
+  //       // setDataStudent(data.data)
+  //       //  setDataList(data.data)
+  //     }
+  //   ).catch((err) => { console.log(err) })
+  };
+
+  // ;
+  const handleOk = () => {
+    setIsModalOpen(false);
+    update_Class();
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+  const update_Class = () => {
+    const params = new URLSearchParams({
+      id_class: formData.id_class,
+      class_name: formData.class_name,
+      id_group:formData.id_group,
+      id_user:formData.id_user,
+      // student_name:formData.student_name,
+      // id_class:formData.id_class,
+      // id_student:formData.id_student
+    }).toString();
+    const url = `https://apifood.kaviet.vn/api/kfood/v1/updateClassRoom?` + params
+    axios.post(url, {},
+      // https://apifood.kaviet.vn/api/kfood/v1/deleteStudent?id_student=${id}`,
+      {
+        headers: {
+          accept: 'application/json',
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          'Content-Type': 'application/json'
+        },
+      }
+    ).then(
+      ({ data }) => {
+        console.log(">>>.")
+        alert("Cập nhật thành công")
+        // dataList.
+        console.log(data)
+        //  setDataList(data.data)
+      }
+    ).catch(err => console.log(err))
+  }
+
   return (
     <>
 
+<Modal title="Thông Tin Chi Tiết" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+        {/* {dataListRole.map((item) => {
+          return ( */}
+            {dataList.map((item) => {
+        const id_temp = localStorage.getItem("id")
+        return item.id == id_temp ?
+          (<>
+           {/* {dataList.map(
+            (item) => {
+              return ( */}
+            <Infor_site>
+              <Title_infor>Thông tin Chức Vụ</Title_infor>
+              <Infor>
+                <Left_div>
+                  <p>ID Lớp: </p>
+                  {/* <label>{dataStudent.id}</label> */}
+                  <input
+                    type='text'
+                    name='id_class'
+                    value={id_class}
+                    placeholder={item.id}
+                    // readOnly={true}
+                    onChange={e => onChange(e)}
+                    // onChange={this.onChange}
+                    style={{ width: "150px" }}
+                  />
+ <p>ID Nhóm: </p>
+                  {/* <label>{dataStudent.id}</label> */}
+                  <input
+                    type='text'
+                    name='id_group'
+                    value={id_group}
+                    placeholder={item.id_group}
+                    // readOnly={true}
+                    onChange={e => onChange(e)}
+                    // onChange={this.onChange}
+                    style={{ width: "150px" }}
+                  />
+
+                </Left_div>
+                <Right_div>
+                  <p>Tên Lớp: </p>
+                  <input
+                    type='text'
+                    name='class_name'
+                    placeholder={item.class_name}
+                    onChange={e => onChange(e)}
+                    // onChange={this.onChange}
+                    style={{ width: "150px" }}
+                  />
+ <p>ID User: </p>
+                  {/* <label>{dataStudent.id}</label> */}
+                  <input
+                    type='text'
+                    name='id_user'
+                    value={id_user}
+                    placeholder={item.id_user}
+                    // readOnly={true}
+                    onChange={e => onChange(e)}
+                    // onChange={this.onChange}
+                    style={{ width: "150px" }}
+                  />
+                </Right_div>
+              </Infor>
+            </Infor_site>
+               </>
+               ) : ("")
      
+           })}
+
+      </Modal>
    
       <div className='Container'>
         <div className='text_center'>
@@ -130,8 +285,11 @@ const [dataList,setDataList]=useState([]);
                    <tr >
                   {/* <td > {1}</td> */}
                   <td>{group.id}</td>
-                  <td> {group.class_name} </td>
-                
+                  <td> 
+                  <a onClick={() => showModal(group.id)}>
+
+                              <span>{group.class_name}  </span>
+                            </a></td>
                   <td style={{ textAlign: 'center' }}>
                     <button
                       onClick={() => Dele(group.id)}
@@ -161,3 +319,75 @@ const [dataList,setDataList]=useState([]);
 };
 
 export default ListClass;
+
+const Infor_site = styled.div`
+  background-color: white;
+  padding: 2rem 3rem;
+  width: 100%;
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2),
+    8px 8px 8px 8px rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  background-color: whitesmoke;
+`;
+const Infor = styled.div`
+  display: flex;
+  // width:500px
+`;
+const Left_div = styled.div`
+  padding-right: 10px;
+  padding-left: 10px;
+  max-width: 35%;
+`;
+const Right_div = styled.div`
+  padding-right: 10px;
+  padding-left: 10px;
+  max-width: 35%;
+  margin-left: 2rem;
+`;
+const Image_div = styled.div`
+  padding-top: 30px;
+`;
+const Title_infor = styled.p`
+  font-size: 2.5rem;
+  width: 60%;
+  margin: auto;
+  padding-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  // text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
+  //   0px -4px 10px rgba(255, 255, 255, 0.3);
+`;
+const Title_gpa = styled.p`
+  font-size: 2.5rem;
+  // width: 50%;
+  // margin: auto;
+  padding-bottom: 20px;
+  font-weight: bold;
+  //text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  // text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
+  //   0px -4px 10px rgba(255, 255, 255, 0.3);
+`;
+const Gpa_site = styled.div`
+  // border: 1px solid black;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  width: 40%;
+  padding: 2rem 3rem;
+  margin-left: 5%;
+  height: 50vh;
+  align-items: center;
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2),
+    8px 8px 8px 8px rgba(0, 0, 0, 0.19);
+  text-align: center;
+`;
+const Site = styled.div`
+  display: flex;
+  margin-top: 10%;
+`;
+const Btn_site = styled.div`
+  position: static;
+  margin-top: 5vh;
+  text-align: center;
+`;

@@ -20,6 +20,7 @@ class NavBar extends Component {
       openNav: false,
       chooseHome: true,
       chooseNoti: false,
+      chooseRole: false,
       chooseChat: false,
       chooseList: false,
       chooseChart: false,
@@ -45,6 +46,7 @@ class NavBar extends Component {
       chooseHome: true,
       chooseNoti: false,
       chooseChat: false,
+      chooseRole: false,
       chooseList: false,
       chooseChart: false,
       chooseInfoTeacher: false,
@@ -57,8 +59,10 @@ class NavBar extends Component {
       chooseHome: false,
       chooseNoti: true,
       chooseChat: false,
+      chooseRole: false,
       chooseList: false,
       chooseChart: false,
+      chooseRole: false,
       chooseInfoTeacher: false,
       chooseProfile: false,
     });
@@ -69,6 +73,7 @@ class NavBar extends Component {
       chooseHome: false,
       chooseNoti: false,
       chooseChat: true,
+      chooseRole: false,
       chooseList: false,
       chooseChart: false,
       chooseInfoTeacher: false,
@@ -81,6 +86,7 @@ class NavBar extends Component {
       chooseHome: false,
       chooseNoti: false,
       chooseChat: false,
+      chooseRole: false,
       chooseList: true,
       chooseChart: false,
       chooseInfoTeacher: false,
@@ -94,6 +100,7 @@ class NavBar extends Component {
       chooseNoti: false,
       chooseChat: false,
       chooseList: false,
+      chooseRole: false,
       chooseChart: true,
       chooseInfoTeacher: false,
       chooseProfile: false,
@@ -141,6 +148,17 @@ class NavBar extends Component {
       chooseProfile: false,
     });
   };
+  chooseRole = () => {
+    this.setState({
+      chooseHome: false,
+      chooseNoti: false,
+      chooseChat: false,
+      chooseList: false,
+      chooseChart: false,
+      chooseInfoTeacher: true,
+      chooseProfile: false,
+    });
+  };
 
   render() {
     if (localStorage.getItem("statusLogin") != "true") {
@@ -152,6 +170,7 @@ class NavBar extends Component {
       chooseHome,
       chooseNoti,
       chooseChat,
+      chooseRole,
       chooseList,
       chooseChart,
       chooseInfoTeacher,
@@ -237,8 +256,8 @@ class NavBar extends Component {
                 <span className='tooltip'>Quản Lý Học Sinh</span>
               </li>
               <li
-                className={chooseNoti ? "home" : ""}
-                onClick={this.chooseNoti}>
+                className={chooseRole ? "home" : ""}
+                onClick={this.chooseRole}>
                 <Link to='/home/manage-role'>
                   {/* thong bao */}
                   <div className='icon'>

@@ -86,29 +86,6 @@ const ListStudent = () => {
   };
 
   const [dataListTemp, setDataListTemp] = useState([]);
-  // const ViewDetail = (id) => {
-  //   const params = new URLSearchParams({
-
-  //    id_student:id}).toString();
-  //   const url=`https://apifood.kaviet.vn/api/kfood/v1/detailStudent?`+ params
-  //   axios.post(url,{},
-  //   // https://apifood.kaviet.vn/api/kfood/v1/deleteStudent?id_student=${id}`,
-  //     {
-  //       headers: {
-  //         accept: 'application/json',
-  //         Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //         'Content-Type': 'application/json'
-  //       },
-  //     }
-  //   ).then(
-  //     ({ data }) => {
-  //       console.log(">>>.")
-  //       // dataList.
-  //       console.log(data)
-  //       //  setDataList(data.data)
-  //     }
-  //   )
-  // }
   const Dele = (id) => {
     const params = new URLSearchParams({
 

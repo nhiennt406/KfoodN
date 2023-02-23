@@ -6,9 +6,10 @@ const AddForm =()=>{
   const [formData,setFormData]=useState({
     user_name:"",
     id_role:"",
-    permission:""
+    permission:"", user_account:"",
+    user_password:""
   });
-  const {user_name,id_role,permission}=formData;
+  const {user_name,id_role,permission,user_account,user_password}=formData;
   const onChange = e => {
     setFormData({
       ...formData,
@@ -19,8 +20,9 @@ const AddForm =()=>{
   const params = new URLSearchParams({
     user_name: formData.user_name,
     id_role:formData.id_role,
-    permission:formData.permission
-
+    permission:formData.permission,
+    user_account:formData.user_account,
+    user_password:formData.user_password,
   
   }).toString();
   const url=`https://apifood.kaviet.vn/api/kfood/v1/createUser?`+ params
@@ -83,6 +85,19 @@ const AddForm =()=>{
                   <input
                     type="text"
                     className="form-control"
+                    // required
+                    // name="gpa"
+                    // value={this.state.gpa}
+                    name="user_password"
+                    value={user_password}
+                    onChange={e => onChange(e)}
+                  />
+                      <label>User Account:</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="user_account"
+                    value={user_account}
                     // required
                     // name="gpa"
                     // value={this.state.gpa}
