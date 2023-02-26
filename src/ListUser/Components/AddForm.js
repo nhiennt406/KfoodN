@@ -50,7 +50,7 @@ const AddForm =()=>{
     return (
       <div className="addForm">
         <div className="back">
-          <Link to="/home/list-students" className="btn btn-danger">
+          <Link to="/home/manage-user" className="btn btn-danger">
             <span className="fa fa-arrow-left"></span> &nbsp; Quay lại
           </Link>
         </div>

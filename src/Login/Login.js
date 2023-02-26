@@ -241,7 +241,7 @@ class Login extends Component {
           <Container>
             <App_logo_container>
               <App_logo src={AppLogo} />
-              <Comment>Hệ thống hỗ trợ quản lý suất ăn mần non</Comment>
+              <Comment>Hệ thống hỗ trợ quản lý suất ăn mầm non</Comment>
               <Comment1>Xây dựng và phát triển bởi NTN</Comment1>
             </App_logo_container>
             <Form_container>

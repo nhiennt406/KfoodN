@@ -56,22 +56,22 @@ const ListGroup = () => {
   }
   const [opened, setOpened] = useState(true);
   const [open, setOpen] = useState(false)
-  const [formData,setFormData]=useState({
+  const [formData, setFormData] = useState({
     id_group: "",
     group_name: "",
   });
   const { id_group, group_name } = formData;
-console.log("form",formData);
-const onChange = e => {
-  setFormData({
-    // if(e.target.name == )
+  console.log("form", formData);
+  const onChange = e => {
+    setFormData({
+      // if(e.target.name == )
 
-    ...formData,
-    [e.target.name]: e.target.value,
-    // [formData.id_group]:localStorage.getItem("id")
-  });
-  // console.log(formData)
-};
+      ...formData,
+      [e.target.name]: e.target.value,
+      // [formData.id_group]:localStorage.getItem("id")
+    });
+    // console.log(formData)
+  };
   // const [opened, setOpened] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = (id) => {
@@ -118,17 +118,17 @@ const onChange = e => {
     ).catch(err => console.log(err))
   }
 
-return (
-  <>
-    {/* <Container> */}
+  return (
+    <>
+      {/* <Container> */}
 
-    {/* <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}> */}
+      {/* <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}> */}
 
-            <Modal width={"35%"} title="Cập Nhật Thông Tin" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-            {dataList.map((item) => {
-        const id_temp = localStorage.getItem("id")
-        return item.id == id_temp ?
-          (<>
+      <Modal width={"35%"} title="Cập Nhật Thông Tin" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+        {dataList.map((item) => {
+          const id_temp = localStorage.getItem("id")
+          return item.id == id_temp ?
+            (<>
               <Infor_site>
                 <Title_infor>Thông tin nhóm lớp học</Title_infor>
                 <Infor>
@@ -140,7 +140,7 @@ return (
                       name='id_group'
                       value={item.id}
                       placeholder={item.id}
-                      readOnly={true}
+                      // readOnly={true}
                       onChange={e => onChange(e)}
                       // onChange={this.onChange}
                       style={{ width: "150px" }}
@@ -164,33 +164,33 @@ return (
               </Infor_site>
 
 
-            
 
-              </>
-          ) : ("")
 
-      })}
+            </>
+            ) : ("")
 
-    </Modal>  
-    {/* </Container> */}
-    <div className='Container'>
-      <div className='text_center'>
-        <h1 id='qlsv'>Quản Lý Nhóm Lớp Học</h1>
-      </div>
-      <div className='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-        &nbsp;
-        <div className='dropdown'>
-          <button
-            type='button'
-            className='btn dropdown-toggle'
-            id='dropdownMsv'
-            data-toggle='dropdown'
-            aria-haspopup='true'
-            aria-expanded='true'>
-            Nhóm &nbsp; <span className='fa fa-caret-square-o-down'></span>
-          </button>
-          <ul className='dropdown-menu' aria-labelledby='dropdownMenu1'>
-            {/* {lop.map((item) => (
+        })}
+
+      </Modal>
+      {/* </Container> */}
+      <div className='Container'>
+        <div className='text_center'>
+          <h1 id='qlsv'>Quản Lý Nhóm Lớp Học</h1>
+        </div>
+        <div className='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+          &nbsp;
+          <div className='dropdown'>
+            <button
+              type='button'
+              className='btn dropdown-toggle'
+              id='dropdownMsv'
+              data-toggle='dropdown'
+              aria-haspopup='true'
+              aria-expanded='true'>
+              Nhóm &nbsp; <span className='fa fa-caret-square-o-down'></span>
+            </button>
+            <ul className='dropdown-menu' aria-labelledby='dropdownMenu1'>
+              {/* {lop.map((item) => (
                 <li
                   to='/home/list-students'
                   key={item}
@@ -198,81 +198,81 @@ return (
                   <a role='button'>{item}</a>
                 </li>
               ))} */}
-          </ul>
-        </div>
-        <label
-          style={{
-            paddingTop: "8px",
-            paddingBottom: "2px",
-            marginRight: "10px",
-          }}>
-          {sessionStorage.getItem("item")}
-        </label>
+            </ul>
+          </div>
+          <label
+            style={{
+              paddingTop: "8px",
+              paddingBottom: "2px",
+              marginRight: "10px",
+            }}>
+            {sessionStorage.getItem("item")}
+          </label>
 
-        &nbsp;
+          &nbsp;
 
-        &nbsp;
-        <Link to='/home/manage-group/add'
-          className='btn btn-primary data'>
-          <span className='fa fa-file-import'></span>&nbsp; Thêm Nhóm Lớp Học
-        </Link>
-        <div className='row'>
-          <div className='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-            <table className='table--container'>
-              <tbody>
-                <tr className='thea'>
-                  {/* <td className='header-text'>STT</td> */}
-                  <td className='header-text'>ID Nhóm Lớp Học</td>
-                  <td className='header-text'>Tên Nhóm Lớp Học</td>
+          &nbsp;
+          <Link to='/home/manage-group/add'
+            className='btn btn-primary data'>
+            <span className='fa fa-file-import'></span>&nbsp; Thêm Nhóm Lớp Học
+          </Link>
+          <div className='row'>
+            <div className='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+              <table className='table--container'>
+                <tbody>
+                  <tr className='thea'>
+                    {/* <td className='header-text'>STT</td> */}
+                    <td className='header-text'>ID Nhóm Lớp Học</td>
+                    <td className='header-text'>Tên Nhóm Lớp Học</td>
 
-                  <td className='header-text'>Xử  Lý</td>
-                </tr>
+                    <td className='header-text'>Xử  Lý</td>
+                  </tr>
 
-                {dataList.map(
-                  (group) => {
-                    return (
+                  {dataList.map(
+                    (group) => {
+                      return (
 
-                      <tr >
-                        {/* <td > {1}</td> */}
-                        <td>{group.id}</td>
+                        <tr >
+                          {/* <td > {1}</td> */}
+                          <td>{group.id}</td>
 
 
-                        <td>
-                          {/* <Button onClick={() => setOpened(false)}>dđ</Button> */}
-                          <a onClick={() => showModal(group.id)}>
+                          <td>
+                            {/* <Button onClick={() => setOpened(false)}>dđ</Button> */}
+                            <a onClick={() => showModal(group.id)}>
 
-                            <span> {group.group_name} </span>
-                          </a>
-                        </td>
+                              <span> {group.group_name} </span>
+                            </a>
+                          </td>
 
-                        <td style={{ textAlign: 'center' }}>
-                          <button
-                            onClick={() => Dele(group.id)}
-                          >
-                            Xóa
-                          </button>
-                        </td>
+                          <td style={{ textAlign: 'center' }}>
+                            <button
+                              onClick={() => Dele(group.id)}
+                            >
+                              Xóa
+                            </button>
+                          </td>
 
-                      </tr>)
-                  })}
-              </tbody>
-            </table>
+                        </tr>)
+                    })}
+                </tbody>
+              </table>
 
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
 
 
 
 
 
-  </>
+    </>
 
-);
+  );
 
-                }
+}
 export default ListGroup;
 
 const Infor_site = styled.div`

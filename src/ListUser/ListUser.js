@@ -41,7 +41,7 @@ const ListUser = () => {
   // const item={};
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [dataListRole, setDataListRole] = useState([]);
-const [Role,setRole]=useState([]);
+  const [Role, setRole] = useState([]);
   const showModal = (id) => {
     setIsModalOpen(true);
     const params = new URLSearchParams({
@@ -60,7 +60,7 @@ const [Role,setRole]=useState([]);
     ).then(
       ({ data }) => {
         console.log(">>>.")
-  // console.log(data.data.role)
+        // console.log(data.data.role)
         setRole(data.data.role)
         setDataListRole(data.data)
       }
@@ -95,10 +95,10 @@ user_name
 
               <input
                 type='text'
-                // name='id_group'
+                // name='id_user'
                 value={dataListRole.id}
                 placeholder={dataListRole.id}
-                readOnly={true}
+                // readOnly={true}
                 // onChange={e => onChange(e)}
                 // onChange={this.onChange}
                 style={{ width: "150px" }}
@@ -107,10 +107,10 @@ user_name
 
               <input
                 type='text'
-                // name='id_group'
+                // name='user_name'
                 value={dataListRole.user_name}
                 placeholder={dataListRole.user_name}
-                readOnly={true}
+                // readOnly={true}
                 // onChange={e => onChange(e)}
                 // onChange={this.onChange}
                 style={{ width: "150px" }}
@@ -118,18 +118,18 @@ user_name
 
             </Left_div>
             <Right_div>
-            <p>ID Chức Vụ: </p>
+              <p>ID Chức Vụ: </p>
 
-<input
-  type='text'
-  // name='id_group'
-  value={Role.role_id}
-  placeholder={Role.role_id}
-  readOnly={true}
-  // onChange={e => onChange(e)}
-  // onChange={this.onChange}
-  style={{ width: "150px" }}
-/>
+              <input
+                type='text'
+                // name='id_group'
+                value={Role.role_id}
+                placeholder={Role.role_id}
+                // readOnly={true}
+                // onChange={e => onChange(e)}
+                // onChange={this.onChange}
+                style={{ width: "150px" }}
+              />
               <p>Tên Chức Vụ: </p>
               <input
                 type='text'
