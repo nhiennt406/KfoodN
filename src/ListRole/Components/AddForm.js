@@ -45,7 +45,7 @@ const AddForm =()=>{
   return (
     <div className="addForm">
       <div className="back">
-        <Link to="/home/mange-group" className="btn btn-danger">
+        <Link to="/home/mange-role" className="btn btn-danger">
           <span className="fa fa-arrow-left"></span> &nbsp; Quay lại
         </Link>
       </div>
@@ -78,7 +78,7 @@ const AddForm =()=>{
                   </button>{" "}
                   &nbsp;
                   <Link
-                    to="/home/list-students"
+                    to="/home/mange-role"
                     className="button cancle btn btn-primary"
                   >
                     <span className="fa fa-close"></span> &nbsp;Hủy bỏ

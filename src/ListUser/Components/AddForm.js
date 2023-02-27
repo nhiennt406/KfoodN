@@ -192,7 +192,7 @@ const AddForm =()=>{
                     </button>{" "}
                     &nbsp;
                     <Link
-                      to="/home/list-students"
+                      to="/home/manage-user"
                       className="button cancle btn btn-primary"
                     >
                       <span className="fa fa-close"></span> &nbsp;Hủy bỏ

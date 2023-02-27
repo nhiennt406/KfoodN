@@ -37,7 +37,7 @@ const AddForm =()=>{
         },
       }
     ).then((res) => {
-      alert("Them thanh congo");
+      alert("Them thanh cong");
       console.log(res)
     })
       .catch((err) => {
@@ -81,7 +81,7 @@ const AddForm =()=>{
                   </button>{" "}
                   &nbsp;
                   <Link
-                    to="/home/list-students"
+                    to="/home/mange-class"
                     className="button cancle btn btn-primary"
                   >
                     <span className="fa fa-close"></span> &nbsp;Hủy bỏ
