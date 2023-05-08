@@ -16,10 +16,10 @@ export default class Home extends Component {
   render() {
     return (
       <div id='main'>
-      <!-- Messenger Plugin chat Code -->
+  
     <div id="fb-root"></div>
 
-    <!-- Your Plugin chat code -->
+
     <div id="fb-customer-chat" class="fb-customerchat">
     </div>
 
@@ -29,7 +29,7 @@ export default class Home extends Component {
       chatbox.setAttribute("attribution", "biz_inbox");
     </script>
 
-    <!-- Your SDK code -->
+
     <script>
       window.fbAsyncInit = function() {
         FB.init({
